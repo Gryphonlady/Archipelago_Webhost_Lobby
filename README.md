@@ -1,34 +1,14 @@
-Archipelago lobby
-=================
+This is a fork of [Eijebong's](https://github.com/Eijebong) Archipelago lobby system, commonly known as Bananium.
+The goal of this fork is to adapt the lobby system for use in the Archipelago core webhost as a supplemental tool
+for hosts to collect yamls.  
 
-This project provides a lobby to collect yaml files from players to be able to
-host archipelagoes easily.
+This will involve stripping out the following features:
+- Discord authentication (not desired in core space)
+- Yaml checking (currently not prepared to handle updates for it)
+- generation/hosting capabilities (intended just to load yamls for host player to download before generation)
 
-# Running this project
-
-
-```
-docker compose build
-./start.sh
-```
-
-The first start will require you to create a discord application for oauth2. Follow the instructions.
-The first start will also download all apworlds in the index which might take a while.
-
-## Discord oauth
-
-The discord oauth is configured in `Rocket.toml` file
-
-```toml
-[default.oauth.discord]
-provider = "Discord"
-client_id="<your_client_id>"
-client_secret="<your_client_secret>"
-redirect_uri="http://127.0.0.1:8000/auth/oauth" # Switch this to your redirect URI
-admins = [<discord_id_of_admin>, ...]
-```
-
-## Caveats
-
-When working on the `ap-worker`, if you change the python dependencies, you
-have to rerun `docker compose build` and restart everything.
+The following features will be added/revised:
+- Authentication for the host player via existing Session ID token for webhost
+- Ability for non-host players to upload yaml files, along with an optional ID field for bundling yamls
+- Ability for host player to edit/rename/delete yaml files (individual and bundled options)
+- Manual password access to yaml collection lobby as a backup (same idea as server admin password on rooms)
