@@ -14,6 +14,16 @@ Next step: Study the Rust source code and plan the Python conversion.
 - GitHub Actions enabled on Archipelago fork
 - All dependencies installed via `requirements.txt` and `ModuleUpdate.py`
 - Local Archipelago web server confirmed working at `http://127.0.0.1`
+- `config.yaml` created for local development (not committed — already in `.gitignore`)
+- `NOTES.md` added to Archipelago fork and pushed to trigger baseline `unittests` workflow
+- Baseline `unittests` workflow run initiated to confirm fork health before any changes
+
+## Local Server Configuration
+- `config.yaml` lives at `C:\Coding\Archipelago\config.yaml`
+- Never commit this file — it is already in `.gitignore`
+- Key settings: `PORT: 5000`, `DEBUG: true`, `HOST_ADDRESS: "127.0.0.1"`
+- Database file `ap.db3` is auto-created on first server start
+- Background worker database errors on first startup are harmless
 
 ## How to Start the Local Server
 1. Run `start_archipelago.ps1` to open a venv-activated PowerShell in `C:\Coding\Archipelago`
@@ -33,8 +43,9 @@ Next step: Study the Rust source code and plan the Python conversion.
 - `CLAUDE.md` (this file) tracks current project state for Claude context
 
 ## Current Focus
-Not started yet — next session will examine the Rust source code to understand
-what the Webhost Lobby does before writing any Python.
+Environment setup complete. Baseline unittests workflow triggered on Archipelago fork.
+Next session: examine Rust source code to understand what the Webhost Lobby does
+before writing any Python.
 
 ## Converted Features
 None yet.
@@ -42,4 +53,3 @@ None yet.
 ## Known Environment Quirks
 - `_speedups` C++ module is not compiled — falling back to pure Python is fine for development
 - Python 3.11.9 produces a security warning in ModuleUpdate.py — acceptable for local dev
-- Server runs on port 80, not the Flask default of 5000
